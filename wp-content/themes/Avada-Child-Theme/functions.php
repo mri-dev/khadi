@@ -350,6 +350,7 @@ function create_custom_posttypes()
 		'not_found' => 'Nincsenek %s a listában.',
 		'add_new_item' => 'Új %s létrehozása',
 	) );
+  /*
   $products->add_taxonomy( 'csoportok', array(
     'rewrite' => 'csoportok',
     'name' => array('Termékcsoport', 'Termékcsoportok'),
@@ -360,6 +361,7 @@ function create_custom_posttypes()
       'all_items' => '%s',
     )
   ) );
+  */
   $products->add_taxonomy( 'kategoria', array(
     'rewrite' => 'termek-kategoria',
     'name' => array('Termék kategória', 'Termék kategóriák'),
@@ -398,6 +400,7 @@ function create_custom_posttypes()
   add_post_type_support( 'termekek', 'excerpt' );
 
   // Viszonteladók
+  /*
   $resellers = new PostTypeFactory( 'viszonteladok' );
 	$resellers->set_textdomain( TD );
 	$resellers->set_icon('admin-users');
@@ -421,8 +424,10 @@ function create_custom_posttypes()
 
   $resellers->create();
   add_post_type_support( 'viszonteladok', 'excerpt' );
+  */
 
   // Díjak
+  /*
   $dijak = new PostTypeFactory( 'dijak' );
 	$dijak->set_textdomain( TD );
 	$dijak->set_icon('welcome-learn-more');
@@ -435,8 +440,10 @@ function create_custom_posttypes()
 	) );
   $dijak->create();
   add_post_type_support( 'dijak', 'excerpt' );
+  */
 
   // Videók
+  /*
   $videos = new PostTypeFactory( 'videok' );
 	$videos->set_textdomain( TD );
 	$videos->set_icon('video-alt3');
@@ -449,8 +456,10 @@ function create_custom_posttypes()
 	) );
   $videos->create();
   add_post_type_support( 'videok', 'excerpt' );
+  */
 
   // Facebook posts
+  /*
   $fb = new PostTypeFactory( 'facebook' );
 	$fb->set_textdomain( TD );
 	$fb->set_icon('facebook');
@@ -463,8 +472,7 @@ function create_custom_posttypes()
 	) );
   $fb->create();
   add_post_type_support( 'facebook', 'excerpt' );
-
-
+  */
 }
 
 function getYoutubeID( $url )
