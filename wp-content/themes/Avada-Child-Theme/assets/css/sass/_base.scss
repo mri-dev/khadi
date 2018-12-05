@@ -1,19 +1,10 @@
 body, html {
-  font-family: 'Ubuntu', sans-serif !important;
+  //font-family: 'Ubuntu', sans-serif !important;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .fusion-header{
   background: $color-pr;
-}
-
-#main .post h2, #main .reading-box h2, #main h2, .ei-title h2, .fusion-modal h2, .fusion-title h2, .fusion-widget-area h2, .main-flex .slide-content h2, .post-content h2, .title h2,
-.fusion-author .fusion-author-title, .fusion-header-tagline, .fusion-modal .modal-title, .fusion-modal h3, .fusion-pricing-table .pricing-row, .fusion-pricing-table .title-row, .fusion-title h3, .fusion-widget-area h3, .main-flex .slide-content h3, .post-content h3, .project-content h3, .sidebar .widget h3{
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 300;
-}
-
-.post-content h2 {
-  font-size: 2.8em !important;
 }
 
 .rev_slider_wrapper .shadow-left,
@@ -286,6 +277,35 @@ body, html {
 
 .avada-skin-rev{
   border: none;
+}
+
+.slide-contents{
+  background: #f6f6f6 !important;
+  padding: 0 !important;
+  position: relative !important;
+
+  .fusion-row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: initial;
+
+    & > .fusion-layout-column.fusion-one-half{
+      flex-basis: 50%;
+      width: auto;
+      float: none;
+      margin: 0;
+    }
+  }
+
+  .fusion-column-wrapper{
+    padding: 2.3rem;
+
+    h3 {
+      font-size: 2.3rem;
+    }
+  }
 }
 
 .blog-list-holder{

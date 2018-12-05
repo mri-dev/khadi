@@ -16,6 +16,13 @@ class CustomMenuWalker extends Walker_Nav_Menu
     if ($permalink != '' && $permalink != '#') {
       $output .= '</a>';
     }
+
+    // Submenü a termék kategóriáknak
+    // TODO: egyelőre nem kell, mert nincs benne a menü szerkezet tervezetben
+    if ($item->type == 'taxonomy' && $item->object == 'kategoria') {
+      $objid = $item->object_id;
+    }
+
     $output .= '</li>';
   }
 }
