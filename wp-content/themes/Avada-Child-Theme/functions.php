@@ -307,7 +307,22 @@ function kategoria_taxonomy_custom_fields($tag) {
 		<input type="text" name="term_meta[boritokep]" id="term_meta[boritokep]" size="25" style="width:100%;" value="<?php echo $term_meta['boritokep'] ? $term_meta['boritokep'] : ''; ?>">
 	</td>
 </tr>
-
+<tr class="form-field">
+	<th scope="row" valign="top">
+		<label for="predesc_title"><?php _e('Ismertető szöveg felirat'); ?></label>
+	</th>
+	<td>
+		<input type="text" name="term_meta[predesc_title]" id="term_meta[predesc_title]" size="25" style="width:100%;" value="<?php echo $term_meta['predesc_title'] ? $term_meta['predesc_title'] : ''; ?>">
+	</td>
+</tr>
+<tr class="form-field">
+	<th scope="row" valign="top">
+		<label for="catcontent"><?php _e('Kategória részletes ismertető'); ?></label>
+	</th>
+	<td>
+    <?php wp_editor(stripslashes($term_meta['catcontent']), 'term_meta[catcontent]', array('tinymce' => true) ); ?>
+	</td>
+</tr>
 <?php
 }
 
@@ -666,15 +681,38 @@ function my_custom_fonts() {
 
 function header_custom_js()
 {
-    echo '<script>
-    (function($) {
-      $(document).ready(function(){
-        $(\'#mobilnavtgl\').click(function(){
-          $(\'.navmenu\').slideToggle(400);
-        });
+  ?>
+  <script>
+  (function($) {
+    $(document).ready(function(){
+      $('#mobilnavtgl').click(function(){
+        $('.navmenu').slideToggle(400);
       });
-    })( jQuery );
-    </script>';
+      jQuery.each(jQuery('.autocorrett-height-by-width'), function(i,e){
+        var ew = jQuery(e).width();
+        var ap = jQuery(e).data('image-ratio');
+        var respunder = jQuery(e).data('image-under');
+    		var pw = $(window).width();
+        ap = (typeof ap !== 'undefined') ? ap : '4:3';
+        var aps = ap.split(":");
+        var th = ew / parseInt(aps[0])  * parseInt(aps[1]);
+
+    		if (respunder) {
+    			if (pw < respunder) {
+    				jQuery(e).css({
+    	        height: th
+    	      });
+    			}
+    		} else{
+    			jQuery(e).css({
+            height: th
+          });
+    		}
+      });
+    });
+  })( jQuery );
+  </script>
+  <?php
 }
 add_action( 'wp_head', 'header_custom_js' );
 

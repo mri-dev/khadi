@@ -505,30 +505,18 @@ ul.nav {
       position: relative;
 
       .felirat{
-        background: rgba(255, 255, 255, 0.91);
-        text-align: center;
-        padding: 25px;
         position: absolute;
-        top: 50%;
-        left: 50%;
+        bottom: 25px;
+        left: 0;
         width: 100%;
-        -webkit-transform:translate(-50%,-50%);
-        transform:translate(-50%,-50%);
-
 
         h1 {
-          text-transform: uppercase;
-          font-weight: 300;
-          font-size: 4vh;
-          color: black;
-          margin: 0 0 20px 0;
-        }
-
-        .desc{
-          color: black;
-          font-size: 1.2em;
-          line-height: 1.2;
-          font-weight: 300;
+          font-weight: 800;
+          font-size: 3vw;
+          color: white;
+          margin: 0;
+          text-align: center;
+          line-height: 1.3;
         }
       }
     }
@@ -548,7 +536,10 @@ ul.nav {
   }
 
 }
-
+body.archive,
+body.archive #main {
+  background: #f6f6f6;
+}
 .mobile-slogan{
   background: $color-pr;
   text-align: center;
@@ -572,10 +563,11 @@ ul.nav {
     align-items: flex-start;
     margin: -15px;
     & > div {
-      flex-basis: calc(100% / 4);
+      flex-basis: calc(100% / 3);
       padding: 15px;
+      font-size: 0.8rem;
       & > .wrapper{
-        border: 0.5px solid transparent;
+        border-radius: 4px;
         padding: 0.5px;
         .image{
           text-align: center;
@@ -601,33 +593,45 @@ ul.nav {
           padding: 15px;
 
           .title{
-            text-align: center;
+            border-bottom: 1px solid black;
             h4{
-              text-align: center;
-              font-size: 1.15em;
-              margin: 0 0 25px 0;
+              font-size: 1.05rem;
+              margin: 0;
+              color: #616161;
               a {
+                text-transform: uppercase;
                 display: block;
+                color: #616161;
+                padding: 5px 0;
               }
             }
           }
-
-          .bt{
-            text-align: center;
-            padding: 0 0 15px 0;
-            a{
-              padding: 8px 10px;
-              text-transform: uppercase;
-              color: $color-pr;
-              border: 2px solid $color-pr;
-              font-weight: 600;
-              -webkit-transition: all .4s;
-                transition:all .4s;
-
-              &:hover{
-                background: $color-pr;
-                color: white;
-              }
+          .cat{
+            padding: 5px 0;
+            border-bottom: 0.5px solid black;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin: 0 0 10px 0;
+          }
+          .short-desc{
+            line-height: 1.2rem;
+            height: 55px;
+            overflow: hidden;
+            p{
+              margin: 0;
+            }
+          }
+          .ev-content{
+            position: relative;
+            padding-top: 5px;
+            font-size: 0.7rem;
+            &:before{
+              content:"";
+              border-top: 1px solid black;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 33%;
             }
           }
         }
@@ -635,7 +639,7 @@ ul.nav {
 
       &:hover{
         & > .wrapper{
-          border: 0.5px solid #d7d7d7;
+          background: white;
         }
       }
     }
@@ -1458,6 +1462,33 @@ body.single-videok iframe{
   display: none;
 }
 
+.archive .pre-desc{
+  padding: 25px 0;
+  fieldset{
+    border-top: 0.5px solid #262626;
+    legend{
+      text-align: center;
+      margin: 0 0 15px 0;
+      padding: 0 15px;
+      font-size: 1rem;
+    }
+
+    .category-pre-desc{
+      padding: 1rem 5rem;
+    }
+  }
+}
+
+.archive .more-description-cat{
+  padding: 1rem 5rem 5rem 5rem;
+  color: #595959;
+  h2 {
+    margin: 40px 0 20px 0;
+    font-size: 2rem;
+    color: #535353;
+  }
+}
+
 @media all and (max-width: 1000px){
   #main{
     padding-top: 25px;
@@ -1604,6 +1635,7 @@ body.single-videok iframe{
   .videos-holder.style-standard .holder .list .item{
     flex-basis: 50%;
   }
+
   .archive.tax-kategoria .borito .wrapper, .archive.tax-csoportok .borito .wrapper{
     width: 100% !important;
   }
