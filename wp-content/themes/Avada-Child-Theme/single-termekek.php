@@ -36,6 +36,7 @@
       $csop_terms = wp_get_post_terms(get_the_ID(), 'csoportok');
       $tags = wp_get_post_terms(get_the_ID(), 'post_tag');
       $cikkszam = get_post_meta( get_the_ID(), METAKEY_PREFIX.'cikkszam', true);
+      $kiszereles = get_post_meta( get_the_ID(), METAKEY_PREFIX.'kiszereles', true);
       $termekcsoportok = array();
 
       if ($csop_terms) {
@@ -53,7 +54,7 @@
       //$csop_terms_nav = tax_nav( $csop_terms[0] );
   ?>
   <div class="content-wrapper">
-    <?php if (false): ?>      
+    <?php if (false): ?>
       <div class="nav">
         <ul class="nav">
           <li><a href="/"><?php echo __('Főoldal', TD); ?></a></li>
@@ -77,7 +78,7 @@
         </div>
       </div>
       <div class="prod-body">
-        <div class="cat"><?php echo $kat_terms[0]->name ?></div>
+        <div class="cat"><?php echo $kat_terms[0]->name ?><?=($kiszereles)?' '.$kiszereles:''?></div>
         <h1><?php echo the_title(); ?></h1>
         <?php
           $leiras_bulettpoints = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_bulettpoints', true);
@@ -86,11 +87,57 @@
           $leiras_hasznalat = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_hasznalat', true);
           $leiras_kombinaciok = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_kombinaciok', true);
           $leiras_hatoanyagok = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_hatoanyagok', true);
+
+          $badge_vegan = get_post_meta( get_the_ID(), METAKEY_PREFIX.'badge_vegan', true);
+          $badge_bdih = get_post_meta( get_the_ID(), METAKEY_PREFIX.'badge_bdih', true);
+          $badge_nature = get_post_meta( get_the_ID(), METAKEY_PREFIX.'badge_nature', true);
         ?>
+        <?php if ($badge_vegan || $badge_bdih || $badge_nature): ?>
+        <div class="badges">
+          <? if($badge_vegan):?><div class="badge"><img src="<?=IMG?>/vegan-badge.svg" alt="Vegan"></div><? endif; ?>
+          <? if($badge_bdih):?><div class="badge"><img src="<?=IMG?>/bdih-badge.svg" alt="BDIH"></div><? endif; ?>
+          <? if($badge_nature):?><div class="badge"><img src="<?=IMG?>/natural-badge.svg" alt="Nature"></div><? endif; ?>
+        </div>
+        <?php endif; ?>
         <?php if ($leiras_bulettpoints): ?>
-        <div class="div-sep"></div>
         <div class="bulettpoints">
           <?php echo $leiras_bulettpoints; ?>
+        </div>
+        <?php endif; ?>
+        <?php
+          $ico_cleanyourhair = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_cleanyourhair', true);
+          $ico_cleanyourhair_text = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_cleanyourhair_text', true);
+          $ico_heat = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_heat', true);
+          $ico_heat_text = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_heat_text', true);
+          $ico_exptimming = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_exptimming', true);
+          $ico_exptimming_text = get_post_meta( get_the_ID(), METAKEY_PREFIX.'ico_exptimming_text', true);
+        ?>
+        <?php if ($ico_cleanyourhair || $ico_heat || $ico_exptimming): ?>
+        <div class="ico-pres">
+          <?php if ($ico_cleanyourhair): ?>
+          <div class="icop">
+            <img src="<?=IMG?>/bottle.svg" alt="">
+            <div class="t">
+              <?php echo __('Tisztítsa meg haját', TD); ?>
+            </div>
+          </div>
+          <?php endif; ?>
+          <?php if ($ico_heat): ?>
+          <div class="icop">
+            <img src="<?=IMG?>/temperature.svg" alt="">
+            <div class="t">
+              <? if($ico_heat_text): echo $ico_heat_text; endif; ?>
+            </div>
+          </div>
+          <?php endif; ?>
+          <?php if ($ico_exptimming): ?>
+          <div class="icop">
+            <img src="<?=IMG?>/clock.svg" alt="">
+            <div class="t">
+              <? if($ico_exptimming_text): echo $ico_exptimming_text; endif; ?>
+            </div>
+          </div>
+          <?php endif; ?>
         </div>
         <?php endif; ?>
         <div class="div-sep"></div>
@@ -195,6 +242,39 @@
   <?php endwhile; wp_reset_postdata(); ?>
 </div>
 <?php do_action( 'avada_after_content' ); ?>
+</div> <!-- fusion-row break -->
+<div class="deliver-infos">
+  <div class="fusion-row">
+    <div class="block">
+      <div class="img">
+        <img src="<?=IMG?>/gift.svg" alt="<?=__('Ajándék', TD)?>">
+      </div>
+      <div class="t">
+        <strong><?=__('Ajándék', TD)?></strong><br>
+        <?=__('minden rendelés mellé', TD)?>
+      </div>
+    </div>
+    <div class="block">
+      <div class="img">
+        <img src="<?=IMG?>/delivery.svg" alt="<?=__('Szállítás', TD)?>">
+      </div>
+      <div class="t">
+        <strong><?=__('Ingyenes és gyors szállítás', TD)?></strong><br>
+        <?=__('az egész ország területére', TD)?>
+      </div>
+    </div>
+    <div class="block">
+      <div class="img">
+        <img src="<?=IMG?>/phone.svg" alt="<?=__('Tanácsadás', TD)?>">
+      </div>
+      <div class="t">
+        <strong><?=__('Ingyenes tanácsadás', TD)?></strong><br>
+        <?=__('kérdezzen bátran szakértőinktől', TD)?>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fusion-row"> <!-- fusion-row re -->
 <?php get_footer();
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.
