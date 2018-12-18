@@ -18,8 +18,10 @@ class TermekListSC
       $defaults = apply_filters(
           self::SCTAG.'_defaults',
           array(
-            'limit' => 3,
-            'cikkszam' => ''
+            'limit' => -1,
+            'cikkszam' => '',
+            'template' => 'list',
+            'cat' => false
           )
       );
       /* Parse the arguments. */
@@ -40,6 +42,16 @@ class TermekListSC
             'key' => METAKEY_PREFIX. 'cikkszam',
             'compare' => 'IN',
             'value' => $cikkszamok
+          )
+        );
+      }
+
+      if ($attr['cat']) {
+        $param['tax_query'] = array(
+          array(
+            'taxonomy' => 'kategoria',
+            'field' => 'slug',
+            'terms' => $attr['cat']
           )
         );
       }

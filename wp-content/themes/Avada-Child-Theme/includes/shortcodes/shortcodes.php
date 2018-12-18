@@ -10,4 +10,5 @@
 	 require_once "FacebookListSC.php";
 	 require_once "ProdCatSC.php";
 	 require_once "TermekListSC.php";
+	 require_once "TransInfoBoxSC.php";
 ?>

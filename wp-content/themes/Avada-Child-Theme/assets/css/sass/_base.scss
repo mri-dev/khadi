@@ -1045,38 +1045,40 @@ body.archive #main {
   }
 }
 
+.deliver-infos{
+  background: #c0b4a0;
+  color: white;
+
+  .fusion-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    & > .block {
+      flex-basis: calc(100% / 3);
+      text-align: left;
+      padding: 35px 20px;
+      line-height: 1.4rem;
+      font-size: 1rem;
+
+      .img {
+        float: left;
+        padding: 0 15px 0 0;
+        img {
+          height: 3rem;
+        }
+      }
+    }
+  }
+}
+
 body.single-termekek{
   #main {
     padding: 0;
     border-top: 5px solid #d1d1d1;
   }
-  .deliver-infos{
-    background: #c0b4a0;
-    color: white;
 
-    .fusion-row {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      & > .block {
-        flex-basis: calc(100% / 3);
-        text-align: left;
-        padding: 35px 20px;
-        line-height: 1.4rem;
-        font-size: 1rem;
-
-        .img {
-          float: left;
-          padding: 0 15px 0 0;
-          img {
-            height: 3rem;
-          }
-        }
-      }
-    }
-  }
   .cont{
     display: -webkit-box;
     display: -ms-flexbox;

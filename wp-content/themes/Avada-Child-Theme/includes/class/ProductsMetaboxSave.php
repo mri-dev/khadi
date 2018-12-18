@@ -6,9 +6,9 @@
     }
     public function saving($post_id, $post)
     {
+      /* */
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'cikkszam', $_POST[METAKEY_PREFIX . 'cikkszam'] );
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'kiszereles', $_POST[METAKEY_PREFIX . 'kiszereles'] );
-
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'ico_cleanyourhair', ((isset($_POST[METAKEY_PREFIX . 'ico_cleanyourhair'])) ? 1 : false) );
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'ico_cleanyourhair_text', $_POST[METAKEY_PREFIX . 'ico_cleanyourhair_text'] );
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'ico_heat', ((isset($_POST[METAKEY_PREFIX . 'ico_heat'])) ? 1 : false) );
@@ -26,6 +26,7 @@
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'leiras_hatoanyagok', $_POST[METAKEY_PREFIX . 'leiras_hatoanyagok'] );
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'leiras_kombinaciok', $_POST[METAKEY_PREFIX . 'leiras_kombinaciok'] );
       auto_update_post_meta( $post_id, METAKEY_PREFIX . 'leiras_bulettpoints', $_POST[METAKEY_PREFIX . 'leiras_bulettpoints'] );
+      /* */
     }
   }
 ?>

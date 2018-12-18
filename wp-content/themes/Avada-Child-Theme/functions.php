@@ -550,4 +550,19 @@ if( defined('DEVMODE') && DEVMODE === false ) {
 	}
 	add_action('wp_footer', 'ga_tracking_code');
 }
-
+
+function auto_update_post_meta( $post_id, $field_name, $value = '' )
+{
+    if ( empty( $value ) OR ! $value )
+    {
+      delete_post_meta( $post_id, $field_name );
+    }
+    elseif ( ! get_post_meta( $post_id, $field_name ) )
+    {
+      add_post_meta( $post_id, $field_name, $value );
+    }
+    else
+    {
+      update_post_meta( $post_id, $field_name, $value );
+    }
+}
