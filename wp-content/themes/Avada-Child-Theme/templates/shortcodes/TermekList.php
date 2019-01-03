@@ -34,3 +34,17 @@
   <?php } wp_reset_postdata(); ?>
   </div>
 <?php endif; ?>
+
+<?php if ($slided): ?>
+  <script type="text/javascript">
+    (function($){
+      $(function(){
+        $('.termeklist-holder.style-slide#postlisth<?=$hash?> .products').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true
+        });
+      });
+    })(jQuery);
+  </script>
+<?php endif; ?>

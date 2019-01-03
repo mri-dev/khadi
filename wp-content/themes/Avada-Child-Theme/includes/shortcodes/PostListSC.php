@@ -1,7 +1,7 @@
 <?php
-class TermekListSC
+class PostListSC
 {
-  const SCTAG = 'termeklist';
+  const SCTAG = 'postlist';
 
   public function __construct()
   {
@@ -19,7 +19,6 @@ class TermekListSC
           self::SCTAG.'_defaults',
           array(
             'limit' => -1,
-            'cikkszam' => '',
             'template' => 'list',
             'cat' => false
           )
@@ -27,29 +26,18 @@ class TermekListSC
       /* Parse the arguments. */
       $attr = shortcode_atts( $defaults, $attr );
 
-      $cikkszamok = ($attr['cikkszam'] == '') ? false : explode(",", $attr['cikkszam']);
-
       $meta_query = array();
 
       $param = array(
-        'post_type' => 'termekek',
+        'post_type' => 'post',
         'posts_per_page' => $attr['limit'],
       );
 
-      if ($cikkszamok) {
-        $param['meta_query'] = array(
-          array(
-            'key' => METAKEY_PREFIX. 'cikkszam',
-            'compare' => 'IN',
-            'value' => $cikkszamok
-          )
-        );
-      }
 
       if ($attr['cat']) {
         $param['tax_query'] = array(
           array(
-            'taxonomy' => 'kategoria',
+            'taxonomy' => 'category',
             'field' => 'slug',
             'terms' => $attr['cat']
           )
@@ -58,13 +46,11 @@ class TermekListSC
 
       $datas = new WP_Query( $param );
 
-      $attr['products'] = $datas;
+      $attr['list'] = $datas;
       $pass_data = $attr;
-      $pass_data['hash'] = uniqid();
-      $pass_data['slided'] = ($datas->found_posts > 3) ? true : false;
 
-      $output = '<div class="'.self::SCTAG.'-holder'. (($datas->found_posts > 3)?' style-slide':'') .'" id="postlisth'.$pass_data['hash'].'">';
-      $output .= (new ShortcodeTemplates('TermekList'))->load_template( $pass_data );
+      $output = '<div class="'.self::SCTAG.'-holder">';
+      $output .= (new ShortcodeTemplates('PostList'))->load_template( $pass_data );
       $output .= '</div>';
 
       /* Return the output of the tooltip. */
