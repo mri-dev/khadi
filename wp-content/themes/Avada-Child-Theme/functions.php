@@ -551,6 +551,42 @@ if( defined('DEVMODE') && DEVMODE === false ) {
 	add_action('wp_footer', 'ga_tracking_code');
 }
 
+function customjs()
+{
+  ?>
+  <script type="text/javascript">
+    (function($){
+      $(function(){
+        jQuery.each($('.autocorrett-height-by-width'), function(i,e){
+          var ew = $(e).width();
+          var ap = $(e).data('image-ratio');
+          var respunder = $(e).data('image-under');
+      		var pw = $(window).width();
+          ap = (typeof ap !== 'undefined') ? ap : '4:3';
+      		console.log(ap);
+          var aps = ap.split(":");
+          var th = ew / parseInt(aps[0])  * parseInt(aps[1]);
+
+      		if (respunder) {
+      			if (pw < respunder) {
+      				$(e).css({
+      	        height: th
+      	      });
+      			}
+      		} else{
+      			$(e).css({
+              height: th
+            });
+      		}
+
+        });
+      });
+    })(jQuery);
+  </script>
+  <?php
+}
+add_action('wp_footer', 'customjs');
+
 function auto_update_post_meta( $post_id, $field_name, $value = '' )
 {
     if ( empty( $value ) OR ! $value )

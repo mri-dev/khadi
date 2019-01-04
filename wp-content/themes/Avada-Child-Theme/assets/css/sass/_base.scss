@@ -951,6 +951,49 @@ body.archive #main {
   flex-wrap: wrap;
 }
 
+.subpage-boxs-holder{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: -25px auto;
+  width: 80%;
+
+  & > .page{
+    flex-basis: calc(100% / 3);
+    padding: 25px;
+
+    .wrapper{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #e5dfd7;
+
+      .lab{
+        position: absolute;
+        width: 90%;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+        padding: 10px;
+        background: white;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+      }
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 .footer-contacts{
   .wrapper{
     width: $page-width;

@@ -11,5 +11,6 @@
 	 require_once "ProdCatSC.php";
 	 require_once "TermekListSC.php";
 	 require_once "PostListSC.php";
+	 require_once "SubpageBoxsSC.php";
 	 require_once "TransInfoBoxSC.php";
 ?>

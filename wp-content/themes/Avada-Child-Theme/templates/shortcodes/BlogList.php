@@ -32,10 +32,6 @@
       </div>
     </div>
   <?php endwhile; wp_reset_postdata(); else: ?>
-    <div class="no-item">
-      <h3><?php echo __('Nincs találat.',TD); ?></h3>
-      <?php echo __('Jelenleg nincs aktuális program ajánlatunk. Kérjük nézzen vissza később!',TD); ?>
-    </div>
   <? endif; ?>
   </div>
   <script type="text/javascript">

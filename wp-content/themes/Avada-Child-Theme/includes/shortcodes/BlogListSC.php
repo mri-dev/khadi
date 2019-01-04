@@ -21,7 +21,8 @@ class BlogListSC
               'by' => true,
               'limit' => 3,
               'pagination' => 0,
-              'style' => 'standard'
+              'style' => 'standard',
+              'cat' => false
             )
         );
 
@@ -46,6 +47,16 @@ class BlogListSC
         );
 
         $param['meta_query'] = $meta_query;
+
+        if ($attr['cat']) {
+          $param['tax_query'] = array(
+            array(
+              'taxonomy' => 'category',
+              'field' => 'slug',
+              'terms' => $attr['cat']
+            )
+          );
+        }
 
         $datas = new WP_Query( $param );
 
