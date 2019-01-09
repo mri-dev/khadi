@@ -258,6 +258,26 @@ function findProductUploadedImage( &$img, $postid )
   return $img;
 }
 
+function findProductUploadedImages( $postid )
+{
+  $imgsrc = get_post_meta($postid, METAKEY_PREFIX.'productprofil', true);
+  $updir = wp_upload_dir();
+
+  if ($imgsrc != '') {
+    $imx = explode("/",$imgsrc);
+    $img = $updir['basedir'].'/products/'.$imx[0].'/';
+  }
+
+  $img = array_diff(scandir($img, 1),array('..','.'));
+
+  $imageset = array();
+  foreach ( (array)$img as $i ) {
+    $imageset[] =  $updir['baseurl'] . '/products/' . $imx[0] .'/' . $i;
+  }
+
+  return $imageset;
+}
+
 function rd_init()
 {
   date_default_timezone_set('Europe/Budapest');

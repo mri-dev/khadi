@@ -31,6 +31,7 @@
   <?php while (have_posts()): the_post();
       $img = get_the_post_thumbnail_url(get_the_ID());
       findProductUploadedImage($img, get_the_ID());
+      $images = findProductUploadedImages(get_the_ID());
       $img = ($img) ?: IMG.'/no-product-image.png';
       $kat_terms = wp_get_post_terms(get_the_ID(), 'kategoria');
       $csop_terms = wp_get_post_terms(get_the_ID(), 'csoportok');
@@ -75,6 +76,17 @@
       <div class="image">
         <div class="wrapper autocorrett-height-by-width">
           <img src="<?=$img?>" alt="<?php the_title(); ?>">
+        </div>
+        <div class="images">
+          <?php if (count($images) > 1): ?>
+          <?php foreach ((array)$images as $im): ?>
+            <div class="img">
+              <div class="wrap autocorrett-height-by-width" data-image-ratio="1:1">
+                <img src="<?=$im?>" alt="<?php the_title(); ?>">
+              </div>
+            </div>
+          <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </div>
       <div class="prod-body">
@@ -179,6 +191,32 @@
               if (anchor_tag) {
                 switchTab(anchor_tag);
               }
+
+              $('.images').css({
+                width: $('.image').width()
+              });
+
+              $('.images').slick({
+                infinite: true,
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                centerMode: <?=(count($images)<5)?'false':'true'?>,
+                pauseOnHover: true
+              })
+              .on('init', function(){
+                $('.images').slick('refresh');
+              })
+              .on('afterChange',function(event, slick, currentSlide, nextSlide){
+                var s = $(".images").slick("getSlick").$slides.eq( currentSlide ).find('img').attr('src');
+                $('.image > .wrapper img').attr('src', s);
+              });
+
+              $('.images .img').click(function(){
+                var index = $(this).data('slick-index');
+                $('.images').slick('slickGoTo', index);
+              });
             });
           })(jQuery);
           function switchTab( tab ) {

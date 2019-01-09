@@ -1195,6 +1195,85 @@ body.single-termekek{
     & > .image{
       flex-basis: 60%;
       padding: 0 20px;
+      position: relative;
+
+      .images{
+        position: initial;
+        .img{
+          padding: 5px;
+          .wrap{
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+
+            img {
+              position: absolute;
+              height: 100%;
+              max-height: 100%;
+              left: 50%;
+              top: 50%;
+              width: auto;
+              max-width: initial;
+              transform: translate(-50%,-50%);
+              -moz-transform: translate(-50%,-50%);
+            }
+          }
+
+          &.slick-current .wrap{
+            border: 1px solid #d3c9b8;
+          }
+        }
+
+        .slick-arrow{
+          position: absolute;
+          top: 40%;
+          text-indent: -9999999px;
+          width: 40px;
+          height: 40px;
+          border: none;
+          cursor: pointer;
+          background: transparent;
+          -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+
+          &:focus{
+            outline: none;
+          }
+
+          &:before{
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 24px;
+            color: #888888;
+            text-indent: 0;
+            -webkit-transform:translate(-50%,-50%);
+              transform:translate(-50%,-50%);
+          }
+
+          &.slick-next{
+            right: 0px;
+            &:before{
+              content:"\f105";
+            }
+          }
+          &.slick-prev{
+            left: 0px;
+            &:before{
+              content:"\f104";
+            }
+          }
+
+          &:hover{
+            background: $color-pr;
+            &:before{
+              color: white;
+            }
+          }
+        }
+      }
     }
 
     & > .prod-body {
