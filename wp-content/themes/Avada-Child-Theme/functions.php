@@ -600,6 +600,10 @@ function customjs()
       		}
 
         });
+        $('#mobilnavtgl').click(function(){
+          $('.navmenu').slideToggle(400);
+        });
+
       });
     })(jQuery);
   </script>
@@ -621,4 +625,38 @@ function auto_update_post_meta( $post_id, $field_name, $value = '' )
     {
       update_post_meta( $post_id, $field_name, $value );
     }
+}
+
+add_action('admin_head', 'my_custom_fonts');
+
+function my_custom_fonts() {
+  echo '<style>
+    .wp-picker-container{
+        position: relative !important;
+        height: 34px !important;
+        width: 100% !important;
+    }
+    .wp-picker-container > a {
+      width: 35px !important;
+      height: 35px !important;
+      display: block !important;
+      float: left !important;
+    }
+    .wp-color-result > span {
+      width: 35px !important;
+    }
+    .wp-picker-input-wrap{
+      height: 35px !important;
+      display: block !important;
+    }
+    .wp-picker-input-wrap > input[type=text]{
+      position: absolute !important;
+      right: 0 !important;
+      display: block !important;
+    }
+    .wp-picker-holder{
+      position:relative;
+      z-index: 9999999;
+    }
+  </style>';
 }
