@@ -1330,6 +1330,12 @@ body.single-termekek{
         font-weight: bold;
         margin: 0 0 10px 0;
         text-transform: uppercase;
+
+        .kiszereles{
+          text-transform: none;
+          font-weight: normal;
+          font-size: 1.4rem;
+        }
       }
       h1{
         font-weight: 300;

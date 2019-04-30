@@ -308,8 +308,14 @@
       <?php echo pagination($taxonomy, $pages); ?>
     <?php else: ?>
       <div class="no-products">
-        <h3><?php echo __('Nincsenek termékek.', TD); ?></h3>
+        <h3><?php echo __('Nem találtunk terméket.', TD); ?></h3>
         <?php echo __('A keresési feltételek alapján nem találtunk Önnek termékeket.', TD); ?>
+        <?php if ($_GET['src'] != ''): ?>
+          <br><br>
+          <div class="">
+            <?php echo __('Keresési kifejezés', TD); ?>: <strong><?php echo $_GET['src']; ?></strong>
+          </div>
+        <?php endif; ?>
       </div>
     <?php endif; ?>
   </div>

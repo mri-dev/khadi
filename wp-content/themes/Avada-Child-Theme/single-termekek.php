@@ -90,7 +90,7 @@
         </div>
       </div>
       <div class="prod-body">
-        <div class="cat"><?php echo $kat_terms[0]->name ?><?=($kiszereles)?' '.$kiszereles:''?></div>
+        <div class="cat"><?php echo $kat_terms[0]->name ?> <span class="kiszereles"><?=($kiszereles)?' '.$kiszereles:''?></span></div>
         <h1><?php echo the_title(); ?></h1>
         <?php
           $leiras_bulettpoints = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_bulettpoints', true);
@@ -235,7 +235,7 @@
       <li class="hasznalat"><a href="#hasznalat" onclick="switchTab('hasznalat')"><?=__('Használati utasítás', TD)?></a></li>
       <?php endif; ?>
       <?php if ($leiras_kombinaciok!=''): ?>
-      <li class="kombinaciok"><a href="#kombinaciok" onclick="switchTab('kombinaciok')"><?=__('Kombinálja ezekkel', TD)?></a></li>
+      <li class="kombinaciok"><a href="#kombinaciok" onclick="switchTab('kombinaciok')"><?=__('Kombináld ezekkel', TD)?></a></li>
       <?php endif; ?>
       <?php if ($leiras_osszetevok!=''): ?>
       <li class="osszetevok"><a href="#osszetevok" onclick="switchTab('osszetevok')"><?=__('Összetevők', TD)?></a></li>
@@ -281,37 +281,39 @@
 </div>
 <?php do_action( 'avada_after_content' ); ?>
 </div> <!-- fusion-row break -->
-<div class="deliver-infos">
-  <div class="fusion-row">
-    <div class="block">
-      <div class="img">
-        <img src="<?=IMG?>/gift.svg" alt="<?=__('Ajándék', TD)?>">
+<?php if (false): ?>
+  <div class="deliver-infos">
+    <div class="fusion-row">
+      <div class="block">
+        <div class="img">
+          <img src="<?=IMG?>/gift.svg" alt="<?=__('Ajándék', TD)?>">
+        </div>
+        <div class="t">
+          <strong><?=__('Ajándék', TD)?></strong><br>
+          <?=__('minden rendelés mellé', TD)?>
+        </div>
       </div>
-      <div class="t">
-        <strong><?=__('Ajándék', TD)?></strong><br>
-        <?=__('minden rendelés mellé', TD)?>
+      <div class="block">
+        <div class="img">
+          <img src="<?=IMG?>/delivery.svg" alt="<?=__('Szállítás', TD)?>">
+        </div>
+        <div class="t">
+          <strong><?=__('Ingyenes és gyors szállítás', TD)?></strong><br>
+          <?=__('az egész ország területére', TD)?>
+        </div>
       </div>
-    </div>
-    <div class="block">
-      <div class="img">
-        <img src="<?=IMG?>/delivery.svg" alt="<?=__('Szállítás', TD)?>">
-      </div>
-      <div class="t">
-        <strong><?=__('Ingyenes és gyors szállítás', TD)?></strong><br>
-        <?=__('az egész ország területére', TD)?>
-      </div>
-    </div>
-    <div class="block">
-      <div class="img">
-        <img src="<?=IMG?>/phone.svg" alt="<?=__('Tanácsadás', TD)?>">
-      </div>
-      <div class="t">
-        <strong><?=__('Ingyenes tanácsadás', TD)?></strong><br>
-        <?=__('kérdezzen bátran szakértőinktől', TD)?>
+      <div class="block">
+        <div class="img">
+          <img src="<?=IMG?>/phone.svg" alt="<?=__('Tanácsadás', TD)?>">
+        </div>
+        <div class="t">
+          <strong><?=__('Ingyenes tanácsadás', TD)?></strong><br>
+          <?=__('kérdezzen bátran szakértőinktől', TD)?>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<?php endif; ?>
 <div class="fusion-row"> <!-- fusion-row re -->
 <?php get_footer();
 
