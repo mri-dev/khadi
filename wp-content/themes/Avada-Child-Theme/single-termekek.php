@@ -51,7 +51,6 @@
           $termekcsoportok[] = $cs;
         }
       }
-
       //$csop_terms_nav = tax_nav( $csop_terms[0] );
   ?>
   <div class="content-wrapper">

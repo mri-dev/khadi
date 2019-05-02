@@ -495,7 +495,7 @@ ul.nav {
       max-width: 100%;
     }
   }
-  .borito:not(.no-image) {
+  .borito{
     background: #acacac;
     height: 420px;
     background-position: center;
@@ -524,12 +524,18 @@ ul.nav {
       }
     }
   }
+
   .borito.no-image {
+    height: auto;
+    background: transparent;
     .wrapper{
       width: $page-width;
       margin: 0 auto;
 
       .felirat{
+        position: relative;
+        bottom: inherit;
+        padding: 20px 0;
         h1{
           color: $color-pr;
           font-size: 2.2em;
@@ -537,7 +543,6 @@ ul.nav {
       }
     }
   }
-
 }
 body.archive,
 body.single-termekek,
@@ -559,7 +564,6 @@ body.archive #main {
 .term-list,
 .termeklist-holder{
   padding: 15px 0;
-
   .products{
     .product {
       & > .wrapper{
@@ -782,6 +786,17 @@ body.archive #main {
         font-size: 0.8rem;
       }
     }
+  }
+}
+
+
+.term-list .products:not(.slick-slider){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  .product{
+    flex-basis: calc(100% / 3);
   }
 }
 

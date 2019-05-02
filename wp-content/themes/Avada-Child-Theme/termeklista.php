@@ -297,9 +297,11 @@
               <div class="short-desc">
                 <?php the_excerpt(); ?>
               </div>
-              <div class="ev-content">
-                <strong><?=__('Kiszerelés', TD)?>:</strong> <?php echo get_post_meta(get_the_ID(), METAKEY_PREFIX.'kiszereles', true); ?>
-              </div>
+              <?php if (get_post_meta(get_the_ID(), METAKEY_PREFIX.'kiszereles', true) != ''): ?>
+                <div class="ev-content">
+                  <strong><?=__('Kiszerelés', TD)?>:</strong> <?php echo get_post_meta(get_the_ID(), METAKEY_PREFIX.'kiszereles', true); ?>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>

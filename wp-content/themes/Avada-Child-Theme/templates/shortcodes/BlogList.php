@@ -9,6 +9,11 @@
       $img = get_the_post_thumbnail_url($pid, 'post500thumbnail');
       $url = get_the_permalink($pid);
       $desc = get_the_excerpt($pid);
+      $catobjs = wp_get_post_categories($pid);
+      $cats = array();
+      foreach((array)$catobjs as $c){
+        $cats[] = get_category( $c );
+      }
     ?>
     <div class="item">
       <div class="wrapper">
@@ -18,7 +23,9 @@
           </div>
         <?php endif; ?>
         <div class="cat">
-          Step-by-Step Tutorial
+          <?php
+          $catlinks = '';
+          foreach ((array)$cats as $c): $catlinks .= '<a href="'.get_category_link($c->term_id).'">'.$c->cat_name.'</a>'; endforeach; echo $catlinks; ?>
         </div>
         <div class="title">
           <h3><a href="<? echo the_permalink(); ?>"><? echo the_title(); ?></a></h3>
