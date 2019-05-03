@@ -129,7 +129,7 @@
           <div class="icop">
             <img src="<?=IMG?>/bottle.svg" alt="">
             <div class="t">
-              <?php echo __('Tisztítsa meg haját', TD); ?>
+              <?php echo __('Mosd meg a hajad', TD); ?>
             </div>
           </div>
           <?php endif; ?>
